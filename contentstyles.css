@@ -1,0 +1,129 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.hide{
+    position: fixed;
+    width: 50%;
+    background-color: rgb(101, 177, 168);
+    height: 5vh;
+    margin-left: 25vw;
+    margin-top: -4.2vh;
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 0.5vw;
+    overflow: hidden;
+    padding-top: .5vh;
+    
+    
+}
+
+ .hide:hover{
+    margin-top: 0;
+}
+
+a:visited, a{
+    color: white;
+    text-decoration: none;
+}   
+
+
+a:active, a:hover{
+    color:#adca0a
+}
+body {
+    background-color:   rgb(44, 39, 39);
+    color: aliceblue;
+
+}
+h1{
+    text-align: center;
+    text-shadow: 1px 1px 4px #000;
+}
+
+section{
+    display: flex;
+    scroll-snap-align: start;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-container{
+    background: rgba(0, 0, 0, 0.47);
+    border-radius: 1.5vw;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5.2px);
+    -webkit-backdrop-filter: blur(5.2px);
+    border: 1px solid rgba(49, 48, 48, 1);
+
+}
+.container{
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+     
+}
+.about{
+    background-color: #adca0a;
+    background-image: url("contentbackground.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 500%;
+}
+
+.projects{
+
+    background-color: #adca0a;
+    background-image: url("contentbackground.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 500%;
+}
+
+.skills{
+
+    background-color: #adca0a;
+    background-image: url("contentbackground.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 500%;
+}
+
+.contacts{
+
+    background-color: #adca0a;
+    background-image: url("contentbackground.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 500%;
+}
+
+.projectsgrid{
+    display: flex;
+    margin-left: 20vh;
+}
+
+.projectitem{
+    height: 50vh;
+    width: 30vw;
+}
+.itemimage{
+    height: 30vh;
+    width: 20vw;
+
+}
+
+.skillsbox{
+    display: flex;
+    width: 65vw;
+    justify-content:space-evenly;
+    text-align: center;
+    
+}
+
+.skillscolumn{
+
+}

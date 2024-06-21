@@ -1,0 +1,7 @@
+-page scroll
+-nav bar
+-news feed type
+-video
+-summary of contents
+-link to contents
+-background(blurred)

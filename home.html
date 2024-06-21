@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <link rel="stylesheet" href = "homestyles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Page Title</title>
+    </head>
+    <body>
+
+        <div class ="homepage-contents">
+            <div class="profile-container">
+                <div class="home" id = "home">
+                    <div class="picture">
+                        <img src="Gonzales_Image.jpeg" class ="profile-pic">
+                        <h4>Jorge Guiller Gonzales</h4>
+                    </div>
+    
+                    <div class="socials">
+                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class="fa fa-google"></a>
+                        <a href="#" class="fa fa-twitter"></a>
+                        <a href="#" class="fa fa-linkedin"></a>
+                    </div>
+                    <div class="pages">
+                        <p class="about-home">
+                            <a href="content.html#about">
+                                <i class="material-icons">person</i>
+                                 About Me
+                            </a>
+                        </p>
+    
+                        <p class="about-home">
+                            <a href="content.html#projects">
+                                <i class="material-icons">description</i>
+                                 Projects
+                            </a>
+                        </p>
+    
+                        <p class="about-home">
+                            <a href="content.html#skills">
+                                <i class="material-icons">style</i>
+                                 Skills
+                            </a>
+                        </p>
+    
+                        <p class="about-home">
+                            <a href="content.html#contacts">
+                                <i class="material-icons">contacts</i>
+                                 Contact
+                            </a>
+                        </p>
+    
+
+    
+                    </div>
+
+                </div>
+            </div>
+            
+    
+            <div class="slideshow-container">
+    
+                    <!-- <div class="mySlides fade">
+                        <div class="numbertext">1 / 5</div>
+                        <img src="popup.jpg" class="slide-img" >
+                        <div class="text" id="demo"></div>
+                        <br>
+                    </div> -->
+                      
+                    <div class="mySlides fade">
+                        <div class="numbertext">1 / 4</div>
+                        <img src="pic1.png" class="slide-img" >
+                        
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">2 / 4</div>
+                        <img src="pic3.png" class="slide-img" >
+                        
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">3 / 4</div>
+                        <img src="pic4.png" class="slide-img" >
+                        
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">4 / 4</div>
+                        <img src="pic5.png" class="slide-img" >
+                        
+                    </div>
+                    
+
+            </div>
+            
+        
+        
+        </div>
+        <script>
+
+            function typeWriter(id, text, speed) {
+            let i = 0;
+
+            function type() {
+                if (i < text.length) {
+                    document.getElementById(id).innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+
+            type();
+            }
+            // typeWriter("demo", "Hello World! I am Jorge Guiller Gonzales", 50);
+            
+            
+
+
+            let slideIndex = 0;
+            showSlides();
+            function showSlides() {
+                let i;
+                let slides = document.getElementsByClassName("mySlides");
+                let dots = document.getElementsByClassName("dot");
+                for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) {slideIndex = 1;
+                    // document.getElementById("demo").innerHTML ="";
+                    // typeWriter("demo", "Helllo I am Jorge Guiller Gonzales", 20);
+
+                }    
+
+                slides[slideIndex-1].style.display = "block";  
+
+                setTimeout(showSlides, 4000); // Change image every 2 seconds
+            }
+
+
+
+                
+            
+                
+        </script>
+    </body>
+</html>
