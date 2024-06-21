@@ -9,7 +9,7 @@
     background-color: rgb(101, 177, 168);
     height: 5vh;
     margin-left: 25vw;
-    margin-top: -4.2vh;
+    margin-top: -4.4vh;
     display: flex;
     justify-content: space-evenly;
     border-radius: 0.5vw;
@@ -56,7 +56,7 @@ section{
     font-size: 1.2vw;
 }
 .about-home{
-    font-size: 1.1vw;
+    font-size: 0.9vw;
 }
 .projectcontent{
     font-size: 1.2vw;
