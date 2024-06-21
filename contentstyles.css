@@ -51,6 +51,24 @@ section{
     align-items: center;
 }
 
+.about-content{
+    padding: 1.5vh 1.5vw;
+    font-size: 1.2vw;
+}
+.about-home{
+    font-size: 1.2vw;
+}
+.projectcontent{
+    font-size: 1.2vw;
+}
+
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
 .page-container{
     background: rgba(0, 0, 0, 0.47);
     border-radius: 1.5vw;
@@ -58,6 +76,7 @@ section{
     backdrop-filter: blur(5.2px);
     -webkit-backdrop-filter: blur(5.2px);
     border: 1px solid rgba(49, 48, 48, 1);
+    
 
 }
 .container{
@@ -67,6 +86,8 @@ section{
      
 }
 .about{
+    padding: 1.5vh 1.5vw;
+    font-size: 3vw;
     background-color: #adca0a;
     background-image: url("contentbackground.jpg");
     background-repeat: no-repeat;
@@ -118,12 +139,18 @@ section{
 
 .skillsbox{
     display: flex;
-    width: 65vw;
+    width: 100%;
     justify-content:space-evenly;
     text-align: center;
+    position: inherit;
+    
     
 }
 
 .skillscolumn{
-
+    width: 50%;
+    display: flex;
+    
+    
 }
+

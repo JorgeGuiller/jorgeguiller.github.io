@@ -5,13 +5,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </Head>
     <body >
-
+        <video autoplay muted loop id="myVideo">
+            <source src="Dark Background Web.mp4" type="video/mp4">
+          </video>
         <div class="container">
             <div class="divhover">
                 
                 <header class="hide">
                     <p class="about-home">
-                        <a href="home.html">
+                        <a href="index.html">
                             <i class="material-icons">home</i>
                              Home
                         </a>
@@ -50,42 +52,44 @@
             <section class = "about" id = "about">
                 <div class="page-container">
                     <h1>About Me</h1>
-                <pre>
-Hello, I'm Jorge Guiller Gonzales
-a BS computer Science Student in
-the University of the Philippines
-Visayas Miagao Campus
-
-I aspire excellency in my degree
-and I do so by accumulating
-experience from work
-
-The fields that I am most interested
-in are Game Development, Artificial
-Intelligence, Machine Learning, Data
-Science, Web Development, and Mobile
-Development.
-                </pre>
+                    <div class="words">
+                        <p class="about-content">
+                            Hello, I'm Jorge Guiller Gonzales<br>
+                            a BS computer Science Student in<br>
+                            the University of the Philippines<br>
+                            Visayas Miagao Campus<br><br>
+                            
+                            I aspire excellency in my degree <br>
+                            and I do so by accumulating<br>
+                            experience from work<br><br>
+                            
+                            The fields that I am most interested<br>
+                            in are Game Development, Artificial<br>
+                            Intelligence, Machine Learning, Data<br>
+                            Science, Web Development, and Mobile<br>
+                            Development.
+                        </p>
+                    </div>
                 </div>
             </section>
 
             <section class = "projects" id = "projects">
                 <div class="page-container">
-                    <h1>Projects</h1>
+                    <h1 class="about-content">Projects</h1>
                     <div class="projectsgrid">
                         
                         <div class ="separator">
 
                             <div class="projectitem">
-                                <h3>
+                                <h3 class="about-content">
                                     Project Kurdam
                                 </h3>
                                 <img src="projectkurdam.png" class="itemimage">
-                                <pre>
-Project Kurdam is a 2d turn-based Game
-inspired by Pokemon, D&D, and Wicher Games.
-The game is based on Philippine Folklore. 
-                                </pre>
+                                <p class="project-content">
+Project Kurdam is a 2d turn-based Game<br>
+inspired by Pokemon, D&D, and Wicher Games.<br>
+The game is based on Philippine Folklore.<br> 
+                                </p>
                             </div>
 
                         </div> 
@@ -93,15 +97,15 @@ The game is based on Philippine Folklore.
                         <div class="separator">
 
                             <div class="projectitem">
-                                <h3>
+                                <h3 class="about-content">
                                     Generals
                                 </h3>
                                 <img src="generals.jpg" class="itemimage">
-                                <pre>
-Generals is a turn-based strategy game
-that originated from the Philippines.
-The current mode of play is pass and play. 
-                                </pre>
+                                <p class="project-content">
+Generals is a turn-based strategy game<br>
+that originated from the Philippines.<br>
+The current mode of play is pass and play.<br>
+                                </p>
                             </div>
 
                         </div>
@@ -111,34 +115,83 @@ The current mode of play is pass and play.
 
             <section class = "skills" id="skills">
                 <div class="page-container">
-                    <h1>
+                    <h1 class="about-content">
                         Skills
                     </h1>
                     <div class="skillsbox">
                         <div class ="skilscolumn">
-                            <h3>
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                            <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM14.8055 18.4151C17.1228 17.4003 18.7847 15.1667 18.9806 12.525C18.1577 12.9738 17.12 13.3418 15.9371 13.598C15.7882 15.4676 15.3827 17.1371 14.8055 18.4151ZM9.1945 5.58487C7.24725 6.43766 5.76275 8.15106 5.22208 10.244C5.4537 10.4638 5.84813 10.7341 6.44832 11.0008C6.89715 11.2003 7.42053 11.3798 8.00537 11.5297C8.05853 9.20582 8.50349 7.11489 9.1945 5.58487ZM10.1006 13.9108C10.2573 15.3675 10.5852 16.6202 10.9992 17.5517C11.2932 18.2133 11.5916 18.6248 11.8218 18.8439C11.9037 18.9219 11.9629 18.9634 12 18.9848C12.0371 18.9634 12.0963 18.9219 12.1782 18.8439C12.4084 18.6248 12.7068 18.2133 13.0008 17.5517C13.4148 16.6202 13.7427 15.3675 13.8994 13.9108C13.2871 13.9692 12.6516 14 12 14C11.3484 14 10.7129 13.9692 10.1006 13.9108ZM8.06286 13.598C8.21176 15.4676 8.61729 17.1371 9.1945 18.4151C6.8772 17.4003 5.21525 15.1666 5.01939 12.525C5.84231 12.9738 6.88001 13.3418 8.06286 13.598ZM13.9997 11.8896C13.369 11.9609 12.6993 12 12 12C11.3008 12 10.631 11.9609 10.0003 11.8896C10.0135 9.66408 10.4229 7.74504 10.9992 6.44832C11.2932 5.78673 11.5916 5.37516 11.8218 5.15605C11.9037 5.07812 11.9629 5.03659 12 5.01516C12.0371 5.03659 12.0963 5.07812 12.1782 5.15605C12.4084 5.37516 12.7068 5.78673 13.0008 6.44832C13.5771 7.74504 13.9865 9.66408 13.9997 11.8896ZM15.9946 11.5297C15.9415 9.20582 15.4965 7.11489 14.8055 5.58487C16.7528 6.43766 18.2373 8.15107 18.7779 10.244C18.5463 10.4638 18.1519 10.7341 17.5517 11.0008C17.1029 11.2003 16.5795 11.3798 15.9946 11.5297Z"
+                                fill="currentColor"
+                            />
+                            </svg>
+                            <h3 class ="about-content">
                                 Web Development
                             </h3>
                             <h3>6.5/10</h3>
-                            <pre>
-I have decent experience in web development due to previous
-class projects that requires website development. Most of
-these websites are local and undeployed. My strength in
-this field is creating scripts and databases. 
-                            </pre>
+                            <p class="about-content">
+I have decent experience in web development due to previous<br>
+class projects that requires website development. Most of<br>
+these websites are local and undeployed. My strength in<br>
+this field is creating scripts and databases.<br> 
+                            </p>
                         </div>
                         <div class="skilscolumn">
-                            <h3>
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M15.4695 11.2929C15.0789 10.9024 14.4458 10.9024 14.0553 11.2929C13.6647 11.6834 13.6647 12.3166 14.0553 12.7071C14.4458 13.0976 15.0789 13.0976 15.4695 12.7071C15.86 12.3166 15.86 11.6834 15.4695 11.2929Z"
+                                    fill="currentColor"
+                                />
+                                <path
+                                    d="M16.1766 9.17156C16.5671 8.78103 17.2003 8.78103 17.5908 9.17156C17.9813 9.56208 17.9813 10.1952 17.5908 10.5858C17.2003 10.9763 16.5671 10.9763 16.1766 10.5858C15.7861 10.1952 15.7861 9.56208 16.1766 9.17156Z"
+                                    fill="currentColor"
+                                />
+                                <path
+                                    d="M19.7121 11.2929C19.3216 10.9024 18.6885 10.9024 18.2979 11.2929C17.9074 11.6834 17.9074 12.3166 18.2979 12.7071C18.6885 13.0976 19.3216 13.0976 19.7121 12.7071C20.1027 12.3166 20.1027 11.6834 19.7121 11.2929Z"
+                                    fill="currentColor"
+                                />
+                                <path
+                                    d="M16.1766 13.4142C16.5671 13.0237 17.2003 13.0237 17.5908 13.4142C17.9813 13.8048 17.9813 14.4379 17.5908 14.8284C17.2003 15.219 16.5671 15.219 16.1766 14.8284C15.7861 14.4379 15.7861 13.8048 16.1766 13.4142Z"
+                                    fill="currentColor"
+                                />
+                                <path d="M6 13H4V11H6V9H8V11H10V13H8V15H6V13Z" fill="currentColor" />
+                                <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M7 5C3.13401 5 0 8.13401 0 12C0 15.866 3.13401 19 7 19H17C20.866 19 24 15.866 24 12C24 8.13401 20.866 5 17 5H7ZM17 7H7C4.23858 7 2 9.23858 2 12C2 14.7614 4.23858 17 7 17H17C19.7614 17 22 14.7614 22 12C22 9.23858 19.7614 7 17 7Z"
+                                    fill="currentColor"
+                                />
+                            </svg>
+                            <h3  class="about-content">
                                 Game Development
                             </h3>
                             <h3>8.5/10</h3>
-                            <pre>
-The game development engine that I am familiar and have decent
-and considerable experience is Unity Engine. One of my biggest
-game project is built in Unity Engine. My strong suit in this 
-field is building systems, mechanics, and components. 
-                            </pre>
-                        </div>
+                            <div class="about-content">
+                                <p>
+                                    
+                                        The game development engine that I am familiar and have decent<br>
+                                        and considerable experience is Unity Engine. One of my biggest<br>
+                                        game project is built in Unity Engine. My strong suit in this<br> 
+                                        field is building systems, mechanics, and components.<br>
+                                
+                                </p>
+                            </div>
+                        </div>  
 
                     </div>
 
@@ -147,16 +200,16 @@ field is building systems, mechanics, and components.
 
             <section class = "contacts" id ="contacts">
                 <div class="page-container">
-                    <h1>Contacts</h1>
-                    <pre>
+                    <h1  class="about-content">Contacts</h1>
+                    <p  class="about-content">
                         
-<i class="material-icons">phone</i> Number: 09690353641
+<i class="material-icons">phone</i>&emsp;Number: 09690353641<br>
 
-<a href="#" class="fa fa-facebook">      </a>Facebook: Jorge Gonzales
+<a href="#" class="fa fa-facebook"></a>&ensp;&emsp; Facebook: Jorge Gonzales<br>
 
-<a href="#" class="fa fa-google">     </a>Gmail: jsgonzales10@up.edu.ph or guillergonzales6741@gmail.com
+<a href="#" class="fa fa-google"></a> &emsp;  Gmail: jsgonzales10@up.edu.ph or guillergonzales6741@gmail.com<br>
 
-                    </pre>
+                    </p>
                     
                     
                 </div>
