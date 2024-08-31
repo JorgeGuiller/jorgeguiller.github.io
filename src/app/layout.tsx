@@ -1,10 +1,18 @@
+"use client";
+
+import { ProtectedRoutes } from "@/components/protected-routes";
 import "./globals.css";
+import { useEffect } from "react";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useEffect(() => {
+    document.documentElement.classList.add("loaded");
+  }, []);
+
   return (
     <html lang="en">
       <head>
@@ -23,7 +31,11 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="font-poppins">{children}</body>
+      <ProtectedRoutes>
+        <body className="flex flex-col h-screen w-full font-poppins overflow-hidden">
+          <div className="h-full w-full overflow-auto">{children}</div>
+        </body>
+      </ProtectedRoutes>
     </html>
   );
 }
