@@ -32,8 +32,8 @@ export default function RootLayout({
         />
       </head>
       <ProtectedRoutes>
-        <body className="h-screen w-full overflow-y-auto font-poppins">
-          {children}
+        <body className="flex flex-col h-screen w-full font-poppins overflow-hidden">
+          <div className="h-full w-full overflow-auto">{children}</div>
         </body>
       </ProtectedRoutes>
     </html>

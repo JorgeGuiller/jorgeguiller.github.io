@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { routes } from "@/app/utils/routes";
 
 export const ProtectedRoutes = ({
@@ -10,20 +10,20 @@ export const ProtectedRoutes = ({
   children: React.ReactNode;
 }>) => {
   const router = useRouter();
-  const [loading, setLoading] = useState(true);
-  const [isPending, startTransition] = useTransition();
+  const pathname = usePathname();
+  const [isAllowed, setIsAllowed] = useState<boolean | null>(null);
 
   useEffect(() => {
-    if (!loading) {
-      startTransition(() => {
-        router.push(routes.home);
-      });
-    } else {
-      setLoading(false);
-    }
-  }, [router, loading]);
+    const isAllowedRoute = Object.values(routes).includes(pathname);
 
-  if (loading || isPending) {
+    if (!isAllowedRoute) {
+      router.push(routes.home);
+    } else {
+      setIsAllowed(true);
+    }
+  }, [router, pathname]);
+
+  if (isAllowed === null) {
     return (
       <div className="fixed inset-0 flex justify-center items-center space-x-1 text-sm bg-primary">
         <svg
@@ -44,6 +44,5 @@ export const ProtectedRoutes = ({
       </div>
     );
   }
-
   return <>{children}</>;
 };
