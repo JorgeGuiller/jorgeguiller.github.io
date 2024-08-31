@@ -5,16 +5,27 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        sans: ["Poppins", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+      },
+      fontSize: {
+        base: "12px",
+      },
+      colors: {
+        primary: "#0B0C10",
+        secondary: "#1F2833",
+        accent: "#66FCF1",
+        text: "#C5C6C7",
       },
     },
   },
   plugins: [],
 };
+
 export default config;
