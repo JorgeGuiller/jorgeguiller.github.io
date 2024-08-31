@@ -1,5 +1,6 @@
 "use client";
 
+import { routes } from "@/app/utils/routes";
 import { useRouter } from "next/navigation";
 
 function NavBar() {
@@ -12,7 +13,7 @@ function NavBar() {
         <span
           className="text-[20px] font-regular hover:text-accent transition-all duration-500 hover:cursor-pointer"
           onClick={() => {
-            router.push("/projects");
+            router.push(routes.projects);
           }}
         >
           Projects
@@ -20,7 +21,7 @@ function NavBar() {
         <span
           className="text-[20px] font-regular hover:text-accent transition-all duration-500 hover:cursor-pointer"
           onClick={() => {
-            router.push("/contact");
+            router.push(routes.contact);
           }}
         >
           Contact
