@@ -1,3 +1,9 @@
+import NavBar from "@/components/common/navbar";
+
 export default function Contact() {
-  return <div className="font-bold text-[64px]">Hello, World</div>;
+  return (
+    <main className="flex flex-col min-h-screen w-full items-center bg-primary">
+      <NavBar />
+    </main>
+  );
 }
