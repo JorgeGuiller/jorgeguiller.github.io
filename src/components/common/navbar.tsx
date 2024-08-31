@@ -6,11 +6,11 @@ function NavBar() {
   const router = useRouter();
 
   return (
-    <div className="w-full h-16 flex items-center justify-between p-20">
-      <span className="text-accent text-[45px] font-bold">Jorge</span>
+    <div className="w-full h-16 flex items-center justify-between py-10 px-20 mt-5">
+      <span className="text-accent text-[36px] font-bold">Jorge</span>
       <div className="flex items-center justify-center gap-10">
         <span
-          className="text-[24px] font-regular hover:text-accent transition-all duration-500 hover:cursor-pointer"
+          className="text-[20px] font-regular hover:text-accent transition-all duration-500 hover:cursor-pointer"
           onClick={() => {
             router.push("/projects");
           }}
@@ -18,7 +18,7 @@ function NavBar() {
           Projects
         </span>
         <span
-          className="text-[24px] font-regular hover:text-accent transition-all duration-500 hover:cursor-pointer"
+          className="text-[20px] font-regular hover:text-accent transition-all duration-500 hover:cursor-pointer"
           onClick={() => {
             router.push("/contact");
           }}
@@ -26,7 +26,7 @@ function NavBar() {
           Contact
         </span>
         <span
-          className="text-[24px] font-regular hover:text-accent transition-all duration-500 hover:cursor-pointer"
+          className="text-[20px] font-regular hover:text-accent transition-all duration-500 hover:cursor-pointer"
           onClick={() => {}}
         >
           Resume
