@@ -1,22 +1,29 @@
+import {
+  faFacebookF,
+  faGithub,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
 export const SOCIALS = [
   {
     name: "GitHub",
-    icon: "/assets/icons/github.svg",
+    icon: faGithub,
     url: "https://github.com/JorgeGuiller",
   },
   {
     name: "LinkedIn",
-    icon: "/assets/icons/linkedin.svg",
+    icon: faLinkedin,
     url: "https://www.linkedin.com/in/jorge-guiller-gonzales-260925314/",
   },
   {
     name: "Facebook",
-    icon: "/assets/icons/facebook.svg",
+    icon: faFacebookF,
     url: "https://www.facebook.com/jorge.gonzales.14224094",
   },
   {
     name: "Email",
-    icon: "/assets/icons/email.svg",
+    icon: faEnvelope,
     url: "mailto:jsgonzales10@up.edu.ph",
   },
 ];

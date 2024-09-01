@@ -9,6 +9,7 @@ import { Education } from "./utils/types/education";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { routes } from "./utils/routes";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Home() {
   const router = useRouter();
@@ -33,12 +34,13 @@ export default function Home() {
               </span>
               <div className="flex flex-row w-full justify-center items-center gap-3 mt-8">
                 {socials.map((social, index) => (
-                  <button key={index}>
-                    <Image
-                      src={social.icon}
-                      alt={social.name}
-                      width={40}
-                      height={40}
+                  <button
+                    key={index}
+                    onClick={() => window.open(social.url ?? "", "_blank")}
+                  >
+                    <FontAwesomeIcon
+                      icon={social.icon}
+                      className="h-[40px] w-[40px]"
                     />
                   </button>
                 ))}
