@@ -1,3 +1,5 @@
+"use client";
+
 import {
   faFacebookF,
   faGithub,
@@ -5,8 +7,77 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
+
+interface FormState {
+  name: string;
+  email: string;
+  message: string;
+}
 
 export default function Contact() {
+  const [formState, setFormState] = useState<FormState>({
+    name: '',
+    email: '',
+    message: '',
+  });
+  const [errors, setErrors] = useState<FormState>({
+    name: '',
+    email: '',
+    message: '',
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validateEmail = (email: string) => {
+    const re = /\S+@\S+\.\S+/;
+    return re.test(email);
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      setIsSubmitting(true);
+      const errors = { name: '', email: '', message: '' };
+
+      if (formState.name === '') {
+        errors.name = 'Name is required';
+      }
+
+      if (formState.email === '' || !validateEmail(formState.email)) {
+        errors.email = 'Valid email is required';
+      }
+
+      if (formState.message === '') {
+        errors.message = 'Message is required';
+      }
+
+      setErrors(errors);
+
+      if (!errors.name && !errors.email && !errors.message) {
+         await fetch('/api/email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formState),
+        });
+        setFormState({ name: '', email: '', message: '' });
+      }
+    } catch (error) {
+      // handle error here
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-primary text-xs flex items-center justify-center">
       <div className="max-w-7xl w-full p-5 flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
@@ -20,7 +91,6 @@ export default function Contact() {
         </div>
         <div className="flex-1">
           <div className="relative bg-gray-800 rounded-2xl shadow-lg z-10">
-            {/* HEADER */}
             <div className="flex items-center pl-5 p-3 bg-secondary rounded-t-2xl">
               <div className="flex-1 flex">
                 <div className="w-2 h-2 mr-3 rounded-full bg-cyan-400"></div>
@@ -29,83 +99,94 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* CONTACT FORM */}
             <div className="p-8 bg-primary border-4 rounded-b-2xl border-secondary">
-              <div className="flex flex-col space-y-6">
-                <div className="flex flex-col md:flex-col lg:flex-row justify-between md:items-center">
-                  {/* CONTACT TEXT */}
-                  <div className=" md:text-left lg:w-3/12">
-                    <div className="text-accent font-bold text-3xl md:text-4xl">
-                      <p className="mb-4">Contact</p>
+              <form onSubmit={handleSubmit}>
+                <div className="flex flex-col space-y-6">
+                  <div className="flex flex-col md:flex-col lg:flex-row justify-between md:items-center">
+                    <div className="md:text-left lg:w-3/12">
+                      <div className="text-accent font-bold text-3xl md:text-4xl">
+                        <p className="mb-4">Contact</p>
+                      </div>
+                      <div className="text-accent font-bold text-3xl md:text-4xl w-14">
+                        <p className="mb-3 border-b-2 border-accent pb-1">Me</p>
+                      </div>
                     </div>
-                    <div className="text-accent font-bold text-3xl md:text-4xl w-14">
-                      <p className="mb-3 border-b-2 border-accent pb-1">Me</p>
+
+                    {/* FORM FIELDS */}
+                    <div className="md:w-7/12 space-y-6">
+                      <div className="pb-1 pt-5 border-b border-gray-600">
+                        <input
+                          type="text"
+                          name="name"
+                          value={formState.name}
+                          onChange={handleChange}
+                          className="w-full bg-transparent text-sm text-gray-300 placeholder-gray-600 focus:outline-none"
+                          placeholder="NAME"
+                          required
+                        />
+                      </div>
+                      <div className="pb-1 border-b border-gray-600">
+                        <input
+                          type="email"
+                          name="email"
+                          value={formState.email}
+                          onChange={handleChange}
+                          className="w-full bg-transparent text-sm text-gray-300 placeholder-gray-600 focus:outline-none"
+                          placeholder="EMAIL"
+                          required
+                        />
+                      </div>
+                      <div className="pb-1 border-b border-gray-600">
+                        <textarea
+                          name="message"
+                          value={formState.message}
+                          onChange={handleChange}
+                          className="w-full bg-transparent text-sm text-gray-300 placeholder-gray-600 focus:outline-none"
+                          placeholder="MESSAGE"
+                          rows={3}
+                          required
+                        ></textarea>
+                      </div>
                     </div>
                   </div>
 
-                  {/* FORM FIELDS */}
-                  <div className="md:w-7/12 space-y-6">
-                    {/* NAME */}
-                    <div className="pb-1 pt-5 border-b border-gray-600">
-                      <input
-                        className="w-full bg-transparent text-sm text-gray-300 placeholder-gray-600 focus:outline-none"
-                        placeholder="NAME"
-                      />
-                    </div>
-
-                    {/* EMAIL*/}
-                    <div className="pb-1 border-b border-gray-600">
-                      <input
-                        className="w-full bg-transparent text-sm text-gray-300 placeholder-gray-600 focus:outline-none"
-                        placeholder="EMAIL"
-                      />
-                    </div>
-
-                    {/* MESSAGE */}
-                    <div className="pb-1 border-b border-gray-600">
-                      <textarea
-                        className="w-full bg-transparent text-sm text-gray-300 placeholder-gray-600 focus:outline-none"
-                        placeholder="MESSAGE"
-                        rows={3}
-                      ></textarea>
-                    </div>
+                  {/* BUTTONS */}
+                  <div className="flex justify-end space-x-10 pb-4">
+                    {/* <button type="button" className="text-white hover:border-b-2 hover:border-accent border-b-2 border-transparent">
+                      CANCEL
+                    </button> */}
+                    <button disabled={isSubmitting} type="submit" className="text-accent hover:border-b-2 hover:border-accent border-b-2 border-transparent">
+                      {isSubmitting? 'Sending...' : 'SEND'}
+                    </button>
                   </div>
                 </div>
+              </form>
 
-                {/* BUTTONS */}
-                <div className="flex justify-end space-x-10 pb-4">
-                  <button className="text-white hover:border-b-2 hover:border-accent border-b-2 border-transparent">
-                    CANCEL
-                  </button>
-                  <button className="text-accent g hover:border-b-2 hover:border-accent border-b-2 border-transparent">
-                    SEND
-                  </button>
-                </div>
-
-                {/* SOCIAL MEDIA ICONS */}
-                <div className="flex md:justify-start justify-evenly  space-x-4 h-7 mb-4">
-                  <FontAwesomeIcon
-                    icon={faGithub}
-                    className="hover:text-accent"
-                  />
-                  <FontAwesomeIcon
-                    icon={faLinkedin}
-                    className=" hover:text-accent"
-                  />
-                  <FontAwesomeIcon
-                    icon={faFacebookF}
-                    className=" hover:text-accent"
-                  />
-                  <FontAwesomeIcon
-                    icon={faEnvelope}
-                    className=" hover:text-accent"
-                  />
-                </div>
+              {/* SOCIAL MEDIA ICONS */}
+              <div className="flex md:justify-start justify-evenly space-x-4 h-7 mb-4">
+                <FontAwesomeIcon
+                  icon={faGithub}
+                  className="hover:text-accent"
+                />
+                <FontAwesomeIcon
+                  icon={faLinkedin}
+                  className="hover:text-accent"
+                />
+                <FontAwesomeIcon
+                  icon={faFacebookF}
+                  className="hover:text-accent"
+                />
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className="hover:text-accent"
+                />
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+    
   );
+  
 }
