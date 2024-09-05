@@ -1,13 +1,10 @@
 "use client";
 
-import {
-  faFacebookF,
-  faGithub,
-  faLinkedin,
-} from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import emailjs from 'emailjs-com';
+import React, { useState } from 'react';
+import { SOCIALS } from "../utils/constants/socials";
+import { Social } from "../utils/types/socials";
 
 interface FormState {
   name: string;
@@ -16,66 +13,46 @@ interface FormState {
 }
 
 export default function Contact() {
-  const [formState, setFormState] = useState<FormState>({
-    name: '',
-    email: '',
-    message: '',
-  });
-  const [errors, setErrors] = useState<FormState>({
-    name: '',
-    email: '',
-    message: '',
+
+  const [socials] = useState<Social[]>(SOCIALS);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const isSubmitting = false;
 
-  const validateEmail = (email: string) => {
-    const re = /\S+@\S+\.\S+/;
-    return re.test(email);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      setIsSubmitting(true);
-      const errors = { name: '', email: '', message: '' };
+    emailjs
+      .send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+        formData,
+        process.env.NEXT_PUBLIC_EMAILJS_USER_ID
+      )
+      .then(
+        (result: any) => {
+          console.log(result.text);
+          setIsSent(true); // Set the status to show success message
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
 
-      if (formState.name === '') {
-        errors.name = 'Name is required';
-      }
-
-      if (formState.email === '' || !validateEmail(formState.email)) {
-        errors.email = 'Valid email is required';
-      }
-
-      if (formState.message === '') {
-        errors.message = 'Message is required';
-      }
-
-      setErrors(errors);
-
-      if (!errors.name && !errors.email && !errors.message) {
-         await fetch('/api/email', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formState),
-        });
-        setFormState({ name: '', email: '', message: '' });
-      }
-    } catch (error) {
-      // handle error here
-    } finally {
-      setIsSubmitting(false);
-    }
+    // Reset form after submission
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (
@@ -100,7 +77,7 @@ export default function Contact() {
             </div>
 
             <div className="p-8 bg-primary border-4 rounded-b-2xl border-secondary">
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={sendEmail}>
                 <div className="flex flex-col space-y-6">
                   <div className="flex flex-col md:flex-col lg:flex-row justify-between md:items-center">
                     <div className="md:text-left lg:w-3/12">
@@ -118,7 +95,7 @@ export default function Contact() {
                         <input
                           type="text"
                           name="name"
-                          value={formState.name}
+                          value={formData.name}
                           onChange={handleChange}
                           className="w-full bg-transparent text-sm text-gray-300 placeholder-gray-600 focus:outline-none"
                           placeholder="NAME"
@@ -129,7 +106,7 @@ export default function Contact() {
                         <input
                           type="email"
                           name="email"
-                          value={formState.email}
+                          value={formData.email}
                           onChange={handleChange}
                           className="w-full bg-transparent text-sm text-gray-300 placeholder-gray-600 focus:outline-none"
                           placeholder="EMAIL"
@@ -139,7 +116,7 @@ export default function Contact() {
                       <div className="pb-1 border-b border-gray-600">
                         <textarea
                           name="message"
-                          value={formState.message}
+                          value={formData.message}
                           onChange={handleChange}
                           className="w-full bg-transparent text-sm text-gray-300 placeholder-gray-600 focus:outline-none"
                           placeholder="MESSAGE"
@@ -164,22 +141,17 @@ export default function Contact() {
 
               {/* SOCIAL MEDIA ICONS */}
               <div className="flex md:justify-start justify-evenly space-x-4 h-7 mb-4">
-                <FontAwesomeIcon
-                  icon={faGithub}
-                  className="hover:text-accent"
-                />
-                <FontAwesomeIcon
-                  icon={faLinkedin}
-                  className="hover:text-accent"
-                />
-                <FontAwesomeIcon
-                  icon={faFacebookF}
-                  className="hover:text-accent"
-                />
-                <FontAwesomeIcon
-                  icon={faEnvelope}
-                  className="hover:text-accent"
-                />
+              {socials.map((social, index) => (
+                  <button
+                    key={index}
+                    onClick={() => window.open(social.url ?? "", "_blank")}
+                  >
+                    <FontAwesomeIcon
+                      icon={social.icon}
+                      className="h-[40px] w-[40px]"
+                    />
+                  </button>
+                ))}
               </div>
             </div>
           </div>
