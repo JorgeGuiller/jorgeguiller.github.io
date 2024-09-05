@@ -132,7 +132,7 @@ export default function Contact() {
                     {/* <button type="button" className="text-white hover:border-b-2 hover:border-accent border-b-2 border-transparent">
                       CANCEL
                     </button> */}
-                    <button disabled={isSubmitting} type="submit" className="text-accent hover:border-b-2 hover:border-accent border-b-2 border-transparent">
+                    <button disabled={isSubmitting} type="submit" className="text-accent hover:border-b-2 text-lg hover:border-accent border-b-2 border-transparent">
                       {isSubmitting? 'Sending...' : 'SEND'}
                     </button>
                   </div>
@@ -148,7 +148,7 @@ export default function Contact() {
                   >
                     <FontAwesomeIcon
                       icon={social.icon}
-                      className="h-[40px] w-[40px]"
+                      className="h-[40px] w-[40px] hover:text-accent"
                     />
                   </button>
                 ))}
