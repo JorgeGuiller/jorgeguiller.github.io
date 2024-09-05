@@ -10,18 +10,24 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { routes } from "./utils/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { PROJECTS } from "./utils/constants/projects";
 
 export default function Home() {
   const router = useRouter();
   const [socials] = useState<Social[]>(SOCIALS);
   const [education] = useState<Education[]>(SCHOOLS);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const project = PROJECTS[activeIndex];
 
   return (
     <main className="relative flex flex-col min-h-screen w-full bg-gradient-primary items-center overflow-y-auto">
       <NavBar />
-      <div className="flex w-full px-20">
-        <div className="flex w-full py-[80px] px-[120px] bg-gradient-secondary rounded-[20px]">
-          <div className="flex flex-row w-full justify-between items-center">
+      <div className="flex w-full lg:px-20 px-8">
+        <div className="flex flex-col lg:flex-row w-full lg:py-[80px] lg:px-[100px] py-[40px] px-[40px] bg-gradient-secondary rounded-[20px]">
+          <div className="flex flex-col lg:flex-row w-full justify-between items-center gap-5">
             <div className="flex flex-col justify-center items-center max-w-[600px] text-justify">
               <span className="text-accent text-[45px] font-bold">
                 Hello, World
@@ -52,27 +58,35 @@ export default function Home() {
                 VIEW MY PROJECTS
               </button>
             </div>
-            <Image src="/popup.jpg" alt="popup" width={600} height={600} />
+            <Image
+              src="/popup.jpg"
+              alt="popup"
+              width={500}
+              height={500}
+              className="w-full max-w-[600px] lg:py-0 py-5 lg:mt-0 mt-5 rounded-[100px] object-cover"
+            />
           </div>
         </div>
       </div>
-      <div className="flex flex-row w-full py-[120px] px-[200px] items-start justify-center">
-        <span className="text-text text-[45px] font-bold mr-20 w-1/4">
+      <div className="flex flex-col lg:flex-row w-full lg:py-[80px] lg:px-[100px] py-[40px] px-[40px]">
+        <span className="text-text text-[45px] font-bold lg:mb-20 mb-10 w-full lg:mr-20 mr-0 lg:w-1/4 text-center lg:text-left">
           Education
         </span>
-        <div className="flex flex-col gap-10 w-3/4">
+        <div className="flex gap-10 lg:w-3/4 w-full">
           <div className="flex flex-col w-full">
             {education.map((school, index) => (
               <div key={index} className="mb-10">
-                <div className="flex flex-row justify-between items-center">
-                  <span className="text-text text-[28px] font-bold">
-                    {school.course}
-                  </span>
-                  <span className="text-text text-[16px] font-regular ml-4">
-                    {school.date}
-                  </span>
+                <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between w-full">
+                  <div className="flex flex-col lg:flex-row justify-between w-full lg:items-center sm:items-start">
+                    <span className="text-text text-[28px] font-bold">
+                      {school.course}
+                    </span>
+                    <span className="text-text text-[16px] font-regular">
+                      {school.date}
+                    </span>
+                  </div>
                 </div>
-                <span className="text-accent text-[20px] font-regular">
+                <span className="text-accent text-[20px] font-regular mt-2">
                   {school.school}
                 </span>
               </div>
@@ -84,6 +98,47 @@ export default function Home() {
         <span className="text-text text-[45px] font-bold text-center">
           Projects
         </span>
+        <Slider
+          dots
+          infinite
+          arrows={false}
+          speed={500}
+          slidesToShow={window.innerWidth < 768 ? 1 : 3}
+          slidesToScroll={1}
+          className="w-full flex items-center mt-10"
+          centerMode={true}
+          beforeChange={(current, next) => setActiveIndex(next)}
+        >
+          {PROJECTS.map((project, index) => (
+            <div
+              key={index}
+              className={`cursor-pointer transition-transform duration-300 ${
+                activeIndex === index ? "scale-110" : "scale-75"
+              }`}
+            >
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={700}
+                height={450}
+                className="object-contain rounded-[40px]"
+              />
+            </div>
+          ))}
+        </Slider>
+        <div className="bg-secondary lg:w-[480px] lg:h-[190px] w-full mt-10 flex flex-col items-center justify-between p-5 rounded-xl border-[3px] border-[#35435AE5]">
+          <div className="w-full flex justify-center">
+            <span className="font-bold text-[24px] text-center">
+              {project.title}
+            </span>
+          </div>
+
+          <div className="w-full flex justify-center">
+            <span className="font-regular text-[14px] text-justify leading-relaxed text-center">
+              {project.description}
+            </span>
+          </div>
+        </div>
       </div>
     </main>
   );
