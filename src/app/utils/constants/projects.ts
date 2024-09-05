@@ -23,4 +23,12 @@ export const PROJECTS = [
     link: "#",
     image: "/assets/images/cas.png",
   },
+  {
+    title: "DOST Customer Portal",
+    description:
+      "The DOST Region VI Customer Portal is designed to enhance customer interaction and service efficiency. It provides a user-friendly platform for customers to access various services, information, and support related to DOST Region VI.",
+    technologies: ["Unity", "Textscript", "C++", "React"],
+    link: "#",
+    image: "/assets/images/cas.png",
+  },
 ];

@@ -1,7 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import NavBar from "@/components/common/navbar";
 import { PROJECTS } from "../utils/constants/projects";
 import { Project } from "../utils/types/projects";
