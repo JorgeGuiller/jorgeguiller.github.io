@@ -6,11 +6,6 @@ import React, { useState } from 'react';
 import { SOCIALS } from "../utils/constants/socials";
 import { Social } from "../utils/types/socials";
 
-interface FormState {
-  name: string;
-  email: string;
-  message: string;
-}
 
 export default function Contact() {
 
@@ -20,6 +15,7 @@ export default function Contact() {
     email: "",
     message: "",
   });
+  
 
   const [isSent, setIsSent] = useState(false);
   const isSubmitting = false;
@@ -42,10 +38,7 @@ export default function Contact() {
         process.env.NEXT_PUBLIC_EMAILJS_USER_ID
       )
       .then(
-        (result: any) => {
-          console.log(result.text);
-          setIsSent(true); // Set the status to show success message
-        },
+        () => setIsSent(true), // Set isSent to true after sending email
         (error) => {
           console.log(error.text);
         }
