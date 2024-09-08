@@ -12,22 +12,16 @@ export default function Projects() {
   const [projects] = useState<Project[]>(PROJECTS);
 
   return (
-    <div className="relative flex flex-col min-h-screen w-full bg-gradient-primary items-center overflow-y-auto">
-      <NavBar />
-      <div className="flex w-full px-20 pb-10">
-        <div className="flex flex-col w-full py-[80px] px-[120px] bg-gradient-secondary rounded-[20px] relative">
-          <button
-            className="absolute top-4 left-4 p-6"
-            onClick={() => router.back()}
-          >
-            <Image
-              src="/assets/icons/back.svg"
-              height={32}
-              width={32}
-              alt="back"
-            />
-          </button>
-
+      <div className="relative flex flex-col min-h-screen w-full bg-gradient-primary items-center overflow-hidden">
+        <NavBar />
+        <button
+          className="absolute top-4 left-4 p-6"
+          onClick={() => router.back()}
+        >
+          <Image src="/assets/icons/back.svg" height={32} width={32} alt="back" />
+        </button>
+        <div className="flex w-full px-20 pb-10">
+          <div className="flex flex-col w-full py-[80px] px-[120px] bg-gradient-secondary rounded-[20px] relative">
           {/* TITLE */}
           <div className="relative flex flex-row items-center justify-center mb-10">
             <h1 className="text-4xl font-bold text-center relative z-10 px-4 text-accent flex items-center">
