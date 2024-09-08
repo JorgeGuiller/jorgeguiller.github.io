@@ -4,10 +4,15 @@ import { routes } from "@/app/utils/routes";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
+import { handleDownload } from "@/app/utils/web/download";
 
 function NavBar() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleDownloadResume = async () => {
+    await handleDownload();
+  };
 
   return (
     <>
@@ -33,7 +38,7 @@ function NavBar() {
             </span>
             <span
               className="text-[20px] font-regular hover:text-accent transition-all duration-500 hover:cursor-pointer"
-              onClick={() => {}}
+              onClick={handleDownloadResume}
             >
               Resume
             </span>
