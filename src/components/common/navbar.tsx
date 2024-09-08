@@ -48,7 +48,7 @@ function NavBar() {
               />
             </button>
             {isOpen && (
-              <div className="fixed right-0 mr-6 bg-secondary text-white font-semibold shadow-lg rounded-lg z-10">
+              <div className="fixed right-0 mr-6 bg-secondary text-white font-semibold shadow-lg rounded-lg z-40">
                 <div className="flex flex-col p-2">
                   <span
                     className="hover:bg-accent hover:text-primary flex w-full px-5 py-3 rounded-lg"

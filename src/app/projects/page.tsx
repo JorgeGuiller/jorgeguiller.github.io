@@ -12,22 +12,20 @@ export default function Projects() {
   const [projects] = useState<Project[]>(PROJECTS);
 
   return (
-      <div className="relative flex flex-col min-h-screen w-full bg-gradient-primary items-center overflow-hidden">
-        <NavBar />
-        <button
-          className="absolute top-4 left-4 p-6"
-          onClick={() => router.back()}
-        >
-          <Image src="/assets/icons/back.svg" height={32} width={32} alt="back" />
-        </button>
-        <div className="flex w-full px-20 pb-10">
-          <div className="flex flex-col w-full py-[80px] px-[120px] bg-gradient-secondary rounded-[20px] relative">
+    <div className="relative flex flex-col min-h-screen w-full bg-gradient-primary items-center overflow-y-auto">
+      <NavBar />
+      <button
+        className="absolute lg:top-4 top-[118px] lg:left-4 left-6 p-6"
+        onClick={() => router.back()}
+      >
+        <Image src="/assets/icons/back.svg" height={32} width={32} alt="back" />
+      </button>
+      <div className="flex flex-col w-full lg:px-20 px-8 pb-10">
+        <div className="flex flex-col w-full lg:py-[80px] lg:px-[100px] py-[40px] px-[40px] bg-gradient-secondary rounded-[20px]">
           {/* TITLE */}
-          <div className="relative flex flex-row items-center justify-center mb-10">
+          <div className="relative flex flex-col items-center justify-center lg:mb-10 mb-0">
             <h1 className="text-4xl font-bold text-center relative z-10 px-4 text-accent flex items-center">
-              <div className="w-[30px] border-t-2 border-gray-300 mr-4" />
-              My Projects
-              <div className="w-[30px] border-t-2 border-gray-300 ml-4" />
+              Projects
             </h1>
           </div>
 
@@ -35,11 +33,11 @@ export default function Projects() {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className={`relative flex flex-col md:flex-row py-12 ${
+                className={`relative flex flex-col md:flex-row py-12 gap-5 ${
                   index % 2 !== 0 ? "md:flex-row-reverse" : ""
-                } max-w-7xl w-full rounded-lg shadow-md transition-shadow duration-300 overflow-hidden`}
+                } w-full rounded-lg shadow-md transition-shadow duration-300 overflow-hidden`}
               >
-                <div className="absolute bottom-0 border-t-2 left-0 w-full border-accent"></div>
+                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-accent" />
 
                 {/* IMAGES */}
                 <div className="md:w-2/5">
@@ -51,7 +49,7 @@ export default function Projects() {
                 </div>
 
                 {/* PROJECT DETAILS */}
-                <div className="flex flex-col justify-between p-6 md:w-3/5">
+                <div className="flex flex-col justify-between lg:p-6 lg:py-0 py-4 md:w-3/5">
                   <div>
                     <h2 className="text-2xl font-semibold mb-4">
                       {project.title}
