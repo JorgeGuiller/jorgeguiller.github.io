@@ -55,21 +55,21 @@ export default function Contact() {
   };
 
   return (
-    <main className="relative flex flex-col min-h-screen w-full bg-gradient-primary items-center overflow-hidden">
+    <div className="relative flex flex-col min-h-screen w-full bg-gradient-primary items-center overflow-hidden">
       <NavBar />
       <button
-        className="absolute top-4 left-4 p-6"
+        className="absolute lg:top-4 top-[118px] lg:left-4 left-6 p-6"
         onClick={() => router.back()}
       >
         <Image src="/assets/icons/back.svg" height={32} width={32} alt="back" />
       </button>
       <div className="flex w-full lg:px-20 px-8">
-        <div className="w-full p-5 flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6 bg-gradient-secondary py-20 rounded-[20px] ">
-          <div className="flex-1 flex flex-col items-center justify-center text-center md:text-left">
+        <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6 w-full lg:py-[80px] lg:px-[100px] py-[40px] px-[40px] bg-gradient-secondary rounded-[20px]">
+          <div className="flex-1 flex flex-col items-center justify-center text-center">
             <div className="text-white text-4xl md:text-5xl font-bold w-60">
               Want to work
             </div>
-            <div className="text-accent text-4xl md:text-5xl font-bold w-60">
+            <div className="text-accent text-4xl md:text-5xl font-bold w-60 mb-10">
               together?
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function Contact() {
                             name="message"
                             value={formData.message}
                             onChange={handleChange}
-                            className="w-full bg-transparent text-sm text-gray-300 placeholder-gray-600 focus:outline-none"
+                            className="w-full min-h-[80px] max-h-[120px] bg-transparent text-sm text-gray-300 placeholder-gray-600 focus:outline-none"
                             placeholder="MESSAGE"
                             rows={3}
                             required
@@ -171,6 +171,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 }
