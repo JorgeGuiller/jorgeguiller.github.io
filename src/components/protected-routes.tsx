@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { routes } from "@/app/utils/routes";
+import { routes } from "@/utils/routes";
 
 export const ProtectedRoutes = ({
   children,

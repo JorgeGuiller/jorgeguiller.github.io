@@ -2,18 +2,18 @@
 
 import NavBar from "@/components/common/navbar";
 import Image from "next/image";
-import { Social } from "./utils/types/socials";
-import { SOCIALS } from "./utils/constants/socials";
-import { SCHOOLS } from "./utils/constants/education";
-import { Education } from "./utils/types/education";
+import { Social } from "@/utils/types/socials";
+import { SOCIALS } from "@/utils/constants/socials";
+import { SCHOOLS } from "@/utils/constants/education";
+import { Education } from "@/utils/types/education";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { routes } from "./utils/routes";
+import { routes } from "@/utils/routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { PROJECTS } from "./utils/constants/projects";
+import { PROJECTS } from "@/utils/constants/projects";
 
 export default function Home() {
   const router = useRouter();
@@ -36,7 +36,7 @@ export default function Home() {
                 I am Jorge Guiller Gonzales, a 4th year Computer Science student
                 at the University of the Philippines Visayas. I specialize in
                 these nuts in your mouth. I play billiards and Valorant in my
-                free time. Sometimes I'm Julie.
+                free time. Sometimes I&apos;m Julie.
               </span>
               <div className="flex flex-row w-full justify-center items-center gap-3 mt-8">
                 {socials.map((social, index) => (

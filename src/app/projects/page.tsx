@@ -3,8 +3,8 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import NavBar from "@/components/common/navbar";
-import { PROJECTS } from "../utils/constants/projects";
-import { Project } from "../utils/types/projects";
+import { PROJECTS } from "@/utils/constants/projects";
+import { Project } from "@/utils/types/projects";
 import Image from "next/image";
 
 export default function Projects() {
@@ -41,9 +41,11 @@ export default function Projects() {
 
                 {/* IMAGES */}
                 <div className="md:w-2/5">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
+                    width={350}
+                    height={500}
                     className="object-cover w-full h-full"
                   />
                 </div>

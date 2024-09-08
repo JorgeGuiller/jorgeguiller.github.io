@@ -1,10 +1,10 @@
 "use client";
 
-import { routes } from "@/app/utils/routes";
+import { routes } from "@/utils/routes";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
-import { handleDownload } from "@/app/utils/web/download";
+import { handleDownload } from "@/utils/web/download";
 
 function NavBar() {
   const router = useRouter();
