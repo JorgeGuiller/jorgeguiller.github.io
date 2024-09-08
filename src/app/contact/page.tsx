@@ -64,7 +64,7 @@ export default function Contact() {
         <Image src="/assets/icons/back.svg" height={32} width={32} alt="back" />
       </button>
       <div className="flex w-full lg:px-20 px-8">
-        <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6 w-full lg:py-[80px] lg:px-[100px] py-[40px] px-[40px] bg-gradient-secondary rounded-[20px]">
+        <div className="flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6 w-full lg:py-[80px] lg:px-[100px] py-[40px] px-[40px] bg-gradient-secondary rounded-[20px] mb-10">
           <div className="flex-1 flex flex-col items-center justify-center text-center">
             <div className="text-white text-4xl md:text-5xl font-bold w-60">
               Want to work
