@@ -6,8 +6,8 @@ import emailjs from "emailjs-com";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
-import { SOCIALS } from "../utils/constants/socials";
-import { Social } from "../utils/types/socials";
+import { SOCIALS } from "@/utils/constants/socials";
+import { Social } from "@/utils/types/socials";
 
 export default function Contact() {
   const router = useRouter();
