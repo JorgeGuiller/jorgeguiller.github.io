@@ -84,7 +84,7 @@ function NavBar() {
                   </span>
                   <span
                     className="hover:bg-accent hover:text-primary flex w-full px-5 py-3 rounded-lg"
-                    onClick={() => {}}
+                    onClick={handleDownloadResume}
                   >
                     Resume
                   </span>
