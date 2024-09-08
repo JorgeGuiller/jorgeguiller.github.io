@@ -1,10 +1,10 @@
 "use client";
 
 import { routes } from "@/app/utils/routes";
+import { handleDownload } from "@/app/utils/web/download";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import Image from "next/image";
-import { handleDownload } from "@/app/utils/web/download";
 
 function NavBar() {
   const router = useRouter();
@@ -17,31 +17,46 @@ function NavBar() {
   return (
     <>
       <div className="w-full h-16 flex items-center justify-between py-10 lg:px-20 px-8 mt-5">
-        <span className="text-accent text-[36px] font-bold">Jorge</span>
+        <section>
+          <span
+            className="text-accent text-[36px] font-bold hover:cursor-pointer relative after:bg-accent after:absolute after:h-1 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300"
+            onClick={() => {
+              router.push(routes.home);
+            }}
+          >
+            JG
+          </span>
+        </section>
         <div className="flex items-center justify-center gap-10">
           <div className="hidden lg:flex items-center justify-center gap-10">
-            <span
-              className="text-[20px] font-regular hover:text-accent transition-all duration-500 hover:cursor-pointer"
-              onClick={() => {
-                router.push(routes.projects);
-              }}
-            >
-              Projects
-            </span>
-            <span
-              className="text-[20px] font-regular hover:text-accent transition-all duration-500 hover:cursor-pointer"
-              onClick={() => {
-                router.push(routes.contact);
-              }}
-            >
-              Contact
-            </span>
-            <span
-              className="text-[20px] font-regular hover:text-accent transition-all duration-500 hover:cursor-pointer"
-              onClick={handleDownloadResume}
-            >
-              Resume
-            </span>
+            <section>
+              <span
+                className="text-[20px] hover:text-accent font-regular hover:cursor-pointer relative after:bg-accent after:absolute after:h-1 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
+                onClick={() => {
+                  router.push(routes.projects);
+                }}
+              >
+                Projects
+              </span>
+            </section>
+            <section>
+              <span
+                className="text-[20px] hover:text-accent font-regular hover:cursor-pointer relative after:bg-accent after:absolute after:h-1 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer"
+                onClick={() => {
+                  router.push(routes.contact);
+                }}
+              >
+                Contact
+              </span>
+            </section>
+            <section>
+              <span
+                className="text-[20px] hover:text-accent font-regular hover:cursor-pointer relative after:bg-accent after:absolute after:h-1 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointerr"
+                onClick={handleDownloadResume}
+              >
+                Resume
+              </span>
+            </section>
           </div>
           <div className="lg:hidden block">
             <button className="relative" onClick={() => setIsOpen(!isOpen)}>
